@@ -1,0 +1,57 @@
+<div class="col-md-8 scroll-wrapper navbar-offset col-md-offset-4">
+    <div class="scroll-container">
+        <form ng-submit="addItem()">
+            <input class="form-control" type="text" ng-model="newItem" />
+        </form>
+
+        <ul>
+            <li ng-repeat="item in items | filter:{ completed : false } | orderBy:position">
+                <button class="btn btn-link"
+                        ng-click="updateItem(item, 'completed', true)"
+                >
+                    <span class="glyphicon glyphicon-ok"></span>
+                </button>
+
+                {{item.title}}
+
+                <button class="btn btn-link pull-right"
+                        ng-click="deleteItem(item)"
+                >
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </li>
+        </ul>
+
+        <h3>
+            Completed
+            <button class="btn btn-link"
+                    ng-click="showCompleted = !showCompleted"
+            >
+                <span class="glyphicon"
+                      ng-class="{
+                        'glyphicon-eye-open' : !showCompleted,
+                        'glyphicon-eye-close' : showCompleted
+                      }"
+                ></span>
+            </button>
+        </h3>
+
+        <ul ng-show="showCompleted">
+            <li ng-repeat="item in items | filter: { completed : true } | orderBy:position">
+                <button class="btn btn-link"
+                        ng-click="updateItem(item, 'completed', false)"
+                >
+                    <span class="glyphicon glyphicon-ok"></span>
+                </button>
+
+                {{item.title}}
+
+                <button class="btn btn-link pull-right"
+                        ng-click="deleteItem(item)"
+                >
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>

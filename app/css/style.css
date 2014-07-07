@@ -1,0 +1,65 @@
+/* line 4, scss/_base.scss */
+* {
+  border-radius: 0 !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+/* line 9, scss/_base.scss */
+a, button, a:focus, button:focus {
+  outline: none;
+}
+
+/* line 13, scss/_base.scss */
+a {
+  cursor: pointer;
+}
+
+/* line 17, scss/_base.scss */
+.disabled {
+  text-decoration: line-through;
+}
+
+/* line 22, scss/_base.scss */
+.scroll-wrapper,
+.scroll-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* line 30, scss/_base.scss */
+.scroll-container {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* line 1, scss/_navbar.scss */
+.navbar {
+  height: 52px;
+  background: black;
+  color: white;
+  border-bottom: 5px solid #ff6666;
+}
+/* line 7, scss/_navbar.scss */
+.navbar h1 {
+  margin-top: 5px;
+}
+
+/* line 12, scss/_navbar.scss */
+.navbar-offset {
+  top: 62px;
+}
+
+/* line 16, scss/_navbar.scss */
+.navbar .glyphicon {
+  font-size: 30px;
+  color: white;
+}
+/* line 20, scss/_navbar.scss */
+.navbar .glyphicon:hover {
+  color: #ff6666;
+}

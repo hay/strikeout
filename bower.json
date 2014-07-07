@@ -1,0 +1,11 @@
+{
+    "name" : "kittylist",
+    "version" : "0.1",
+    "dependencies" : {
+        "bootstrap" : "3.1.*",
+        "angular" : "1.2.*",
+        "angular-ui-router" : "0.2.*",
+        "underscore" : "1.6.*",
+        "fastclick" : "1.*"
+    }
+}

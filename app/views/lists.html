@@ -1,0 +1,39 @@
+<div class="header">
+    <header>KittyList</header>
+
+    <button class="btn btn-link" ng-click="addList()" title="Add a list">
+        <span class="glyphicon glyphicon-plus"></span>
+    </button>
+
+    <button class="btn btn-link visible-xs-block"
+            ng-click="hideLists()"
+            title=""
+    >
+        <span class="glyphicon glyphicon-tasks"></span>
+    </button>
+
+    <a class="btn btn-link"
+       ui-sref="settings"
+    >
+        <span class="glyphicon glyphicon-cog"></span>
+    </a>
+</div>
+
+<div class="pane-scroll">
+    <ul class="item-list item-list-greensea">
+        <li ng-repeat="list in lists | orderBy:position"
+            class="clearfix"
+            ng-class="{'item-list-selected' : list.id == currentListId}"
+        >
+            <a class="item-list-content" ng-click="showItems(list)">
+                {{list.title}}
+            </a>
+
+            <button class="btn btn-link item-list-rightbutton"
+                    ng-click="deleteList(list)"
+            >
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </li>
+    </ul>
+</div>

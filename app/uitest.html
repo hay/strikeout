@@ -1,0 +1,72 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <title>Kittylist</title>
+    <!--
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        .pane-col {
+            display: -webkit-flex;
+            -webkit-flex-direction: column;
+            height: 100%;
+        }
+
+        .pane-scroll {
+            overflow-y: auto;
+        }
+
+        .navbar {
+            background: yellow;
+            -webkit-flex: 0 0 70px;
+        }
+    </style>
+    -->
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body ng-controller="MainCtrl">
+    <div class="pane-row">
+        <div class="pane-col">
+            <div class="navheader">
+                <h1>Kittylist</h1>
+            </div>
+
+            <div class="pane-scroll">
+                <ul class="item-list">
+                    <li ng-repeat="item in items">Hoi</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pane-col">
+            <div class="pane-scroll">
+                <ul class="item-list">
+                    <li ng-repeat="item in items">Item</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="lib/angular/angular.js"></script>
+    <script>
+        angular.module('app', []).controller('MainCtrl', function($scope) {
+            $scope.items = [];
+
+            for (var i = 0; i < 50; i++) {
+                $scope.items.push(Math.random());
+            }
+
+            console.log($scope.items);
+        });
+    </script>
+</body>
+</html>

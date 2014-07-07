@@ -1,7 +1,10 @@
-app.controller('MainCtrl', function($scope, $state, $rootScope, DataStore) {
+app.controller('MainCtrl', function($scope, $state, $rootScope, $injector, CONF) {
     $rootScope.initializing = true;
     $rootScope.loading = true;
     $scope.online = navigator.onLine;
+    $scope.touchEnabled = 'ontouchend' in window;
+
+    var DataStore = $injector.get(CONF.defaultDataStore);
 
     DataStore.getDatastore().then(
         function() {
@@ -35,5 +38,18 @@ app.controller('MainCtrl', function($scope, $state, $rootScope, DataStore) {
     $scope.updateRecord = function(record, key, value) {
         record._record.set(key, value);
         record[key] = value;
+    }
+
+    $scope.hideLists = function() {
+        $scope.listsVisible = false;
+    }
+
+    $scope.showLists = function() {
+        $scope.listsVisible = true;
+    }
+
+    $scope.isDeviceXs = function() {
+        var element = document.querySelector('.device-xs');
+        return element.offsetWidth > 0 || element.offsetHeight > 0;
     }
 });

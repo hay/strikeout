@@ -1,0 +1,36 @@
+@mixin respond-between($min, $max) {
+    @media (min-width: $min) and (max-width: $max - 1) {
+        @content;
+    }
+}
+
+@mixin respond-from($min) {
+    @media (min-width: $min) {
+        @content;
+    }
+}
+
+@mixin respond-until($max) {
+    @media (max-width: $max - 1) {
+        @content;
+    }
+}
+
+@mixin wh($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin pos($top, $right : "", $bottom : "", $left : "") {
+    @if $right == "" {
+        top: $top;
+        right: $top;
+        bottom: $top;
+        left: $top;
+    } @else {
+        top: $top;
+        right: $right;
+        bottom: $bottom;
+        left: $left;
+    }
+}

@@ -1,0 +1,13 @@
+    <button ng-show="state == 'list'"
+            class="btn btn-link pull-right"
+            ng-click="go('settings')"
+    >
+        <span class="glyphicon glyphicon-cog"></span>
+    </button>
+
+    <button ng-show="state == 'settings'"
+            class="btn btn-link pull-right"
+            ng-click="go('list')"
+    >
+        <span class="glyphicon glyphicon-list"></span>
+    </button>

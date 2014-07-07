@@ -1,0 +1,23 @@
+.pane-col, .pane-row {
+    @include flexbox;
+    width: 100%;
+    height: 100%;
+}
+
+.pane-col {
+    @include flex-direction(column);
+}
+
+.pane-row {
+    @include flex-direction(row);
+}
+
+.pane-scroll {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.pane-content {
+    padding: 10px;
+}

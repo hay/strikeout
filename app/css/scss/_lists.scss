@@ -1,0 +1,26 @@
+.lists {
+    background: $greensea;
+    color: white;
+    @include clearfix;
+
+    @include transition(0.3s);
+
+    @include respond-from($screen-sm) {
+        width: 400px;
+    }
+
+    @include respond-until($screen-sm) {
+        width: 100%;
+        position: absolute;
+        @include pos(0);
+        z-index: 2;
+
+        &.lists-hidden {
+            @include transform( translate3d(-100%, 0, 0) );
+        }
+
+        &.lists-visible {
+            @include transform( translate3d(0, 0, 0) );
+        }
+    }
+}

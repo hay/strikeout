@@ -1,33 +1,18 @@
-$navbar-height: 52px;
-$red : #f66;
-
 * {
     border-radius: 0 !important;
     @include box-shadow(none);
+    @include default-font;
 }
 
 a, button, a:focus, button:focus {
-    outline: none;
+    outline: none !important;
 }
 
 a {
     cursor: pointer;
 }
 
-.disabled {
-    text-decoration: line-through;
-}
-
-.scroll-wrapper,
-.scroll-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-.scroll-container {
-    overflow-x: hidden;
-    overflow-y: auto;
+html, body {
+    width: 100%;
+    height: 100%;
 }

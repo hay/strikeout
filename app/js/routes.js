@@ -2,39 +2,37 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/list/all');
 
     var commonResolves = {
-        datastore : function(DataStore) {
+        datastore : function($injector, CONF) {
+            var DataStore = $injector.get(CONF.defaultDataStore);
+
             return DataStore.getDatastore();
         }
     };
 
     var views = {
-        'navbar' : {
-            controller : 'NavBarCtrl',
-            templateUrl : 'js/partials/navbar.html'
-        },
         'lists' : {
             controller : 'ListsCtrl',
-            templateUrl : 'js/partials/lists.html',
+            templateUrl : 'views/lists.html',
             resolve : commonResolves
         },
         'items' : {
             controller : 'ItemsCtrl',
-            templateUrl : 'js/partials/items.html',
+            templateUrl : 'views/items.html',
             resolve : commonResolves
         },
         'settings' : {
             controller : 'SettingsCtrl',
-            templateUrl : 'js/partials/settings.html'
+            templateUrl : 'views/settings.html'
         }
     };
 
     $stateProvider
         .state('list', {
             url : '/list/:listid',
-            views : _.pick(views, 'navbar', 'lists', 'items')
+            views : _.pick(views, 'lists', 'items')
         })
         .state('settings', {
             url : '/settings',
-            views : _.pick(views, 'navbar', 'settings')
+            views : _.pick(views, 'settings')
         })
 });

@@ -2,24 +2,29 @@
 <html ng-app="kittylist">
 <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Kittylist</title>
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- <link href="http://fonts.googleapis.com/css?family=Cabin" rel="stylesheet" /> -->
     <link rel="stylesheet" href="css/style.css" />
 </head>
-<body ng-controller="MainCtrl">
-    <div ng-show="initializing">
-        <ng-include src="'js/partials/bootstrap.html'"></ng-include>
+<body ng-controller="MainCtrl" ng-class="{'no-touch' : !touchEnabled, 'has-touch' : touchEnabled}">
+    <div class="pane-row" ng-show="!initializing">
+        <div ui-view="lists"
+             class="pane-col lists"
+             ng-class="{'lists-visible' : listsVisible, 'lists-hidden' : !listsVisible}"
+             ng-show="'list' | isState"
+        ></div>
+        <div ui-view="items" class="pane-col items" ng-show="'list' | isState"></div>
+        <div ui-view="settings" class="pane-col" ng-show="'settings' | isState"></div>
     </div>
 
-    <div ng-show="!initializing">
-        <div ui-view="navbar"></div>
+    <ng-include ng-show="initializing" src="'views/bootstrap.html'"></ng-include>
 
-        <div class="container-fluid">
-            <div ui-view="lists"></div>
-            <div ui-view="items"></div>
-            <div ui-view="settings"></div>
-        </div>
-    </div>
+    <!-- Purely used for screen mode detection -->
+    <div class="device-xs visible-xs-block"></div>
 
     <!-- Libraries -->
     <script src="lib/angular/angular.js"></script>
@@ -31,18 +36,18 @@
     <script src="js/app.js"></script>
     <script src="js/conf.js"></script>
 
-    <script src="js/controllers/NavBarCtrl.js"></script>
-    <script src="js/controllers/ListsCtrl.js"></script>
-    <script src="js/controllers/MainCtrl.js"></script>
-    <script src="js/controllers/ItemsCtrl.js"></script>
-    <script src="js/controllers/SettingsCtrl.js"></script>
-
     <script src="js/directives/jsonimporter.js"></script>
 
     <script src="js/services/DataStore.js"></script>
     <script src="js/services/DropboxDataStore.js"></script>
+    <script src="js/services/MockDataStore.js"></script>
     <script src="js/services/util.js"></script>
     <script src="js/services/WunderlistImporter.js"></script>
+
+    <script src="js/controllers/ListsCtrl.js"></script>
+    <script src="js/controllers/MainCtrl.js"></script>
+    <script src="js/controllers/ItemsCtrl.js"></script>
+    <script src="js/controllers/SettingsCtrl.js"></script>
 
     <script src="js/routes.js"></script>
 </body>

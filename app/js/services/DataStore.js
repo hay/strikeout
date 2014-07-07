@@ -17,11 +17,17 @@ app.factory('DataStore', function(CONF, $rootScope, $q, util, DropboxDataStore, 
             return _.extend(newrecord.getFields(), { _record : newrecord });
         },
 
-        _getRecords : function(type) {
+        _getRecords : function(type, query, onlyFields) {
+            query = query || null;
+            onlyFields = onlyFields || false;
             var table = this.provider.getTable(type);
 
-            return table.query().map(function(record) {
-                return _.extend(record.getFields(), { _record : record });
+            return table.query(query).map(function(record) {
+                if (onlyFields) {
+                    return record.getFields();
+                } else {
+                    return _.extend(record.getFields(), { _record : record });
+                }
             });
         },
 
@@ -33,12 +39,19 @@ app.factory('DataStore', function(CONF, $rootScope, $q, util, DropboxDataStore, 
             return this._addRecord('lists', list);
         },
 
-        getItems : function() {
-            return this._getRecords('items');
+        getAsJson : function() {
+            return JSON.stringify({
+                items : this._getRecords('items', null, true),
+                lists : this._getRecords('lists', null, true)
+            });
         },
 
-        getLists : function() {
-            return this._getRecords('lists');
+        getItems : function(query) {
+            return this._getRecords('items', query);
+        },
+
+        getLists : function(query) {
+            return this._getRecords('lists', query);
         }
     };
 

@@ -1,22 +1,36 @@
-app.controller('ListsCtrl', function($scope, datastore, $state, $rootScope, $stateParams, util, $window) {
+app.controller('ListsCtrl', function($scope, datastore, $state, $rootScope, $stateParams, util, $window, $timeout) {
     $scope.currentListId = $stateParams.listid;
     $scope.lists = datastore.getLists();
 
-    $scope.showItems = function(listid) {
-        $state.go('list', { listid : listid });
+    var currentList = datastore.getLists({ id : $scope.currentListId });
+
+    if (currentList.length) {
+        $rootScope.currentListName = currentList[0].title;
+    }
+
+    $scope.showItems = function(list) {
+        if ($scope.isDeviceXs()) {
+            $scope.hideLists();
+
+            $timeout(function() {
+                $state.go('list', { listid : list.id });
+            }, 300);
+        } else {
+            $state.go('list', { listid : list.id });
+        }
     }
 
     $scope.addList = function() {
+        var listName = $window.prompt('Enter a list name');
+
         var list = {
             id : util.getUuid(),
-            title : $scope.newList
+            title : listName
         };
 
         $scope.lists.unshift(
             datastore.addList( list )
         );
-
-        $scope.newList = '';
     }
 
     $scope.deleteList = function(list) {

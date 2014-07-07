@@ -1,0 +1,28 @@
+// Sizes
+$header-height: 45px;
+
+.header {
+    color: white;
+    background: $greensea;
+    @include flex(0 0 $header-height);
+    @include flexbox;
+    @include flex-direction(row);
+    @include box-shadow(0 -2px 11px rgba(0, 0, 0, 0.6));
+
+    header {
+        @include flex(1);
+        font-size: 28px;
+        letter-spacing: 1px;
+        line-height: $header-height;
+        padding-left: 10px;
+    }
+}
+
+.header .glyphicon {
+    font-size: 24px;
+    color: white;
+}
+
+.header .btn {
+    @include flex(0 0 $header-height);
+}

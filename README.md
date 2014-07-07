@@ -1,6 +1,10 @@
 # Kittylist
 A fast, clean and open source task manager.
 
+## Install / developer
+# git clone this repo
+# `bower install` in the root
+
 ## Why is this better than <another product>?
 * It's faster and smaller, no clutter
 * No features you don't need

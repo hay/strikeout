@@ -1,0 +1,29 @@
+.items {
+    h3, form {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .inputform {
+        padding: 10px;
+        min-height: 50px;
+
+        @include flexbox;
+
+        label, input {
+            color: $greensea;
+            font-size: 16px;
+            font-weight: normal;
+            line-height: 35px;
+            padding-right: 10px;
+        }
+
+        input {
+            @include flex(1);
+            height: 35px;
+            padding: 5px;
+            border: 1px solid $greensea;
+
+        }
+    }
+}

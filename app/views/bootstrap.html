@@ -1,0 +1,21 @@
+<div class="overlay" ng-class="{'overlay-show' : initializing, 'overlay-hide' : !initializing}">
+    <h1>Kittylist</h1>
+
+    <h2 ng-show="!online">You need to be online to view your lists.</h2>
+
+    <div ng-show="online">
+        <h2 ng-show="initializing || loading">Loading...</h2>
+
+         <div ng-show="!loading && !isAuthenticated">
+            <h2>Use Dropbox to sync</h2>
+
+            <button class="btn btn-primary"
+                    ng-click="authenticate()"
+            >Link to Dropbox</button>
+        </div>
+
+        <h2 ng-show="!loading && isAuthenticated">You're signed in to Dropbox</h2>
+    </div>
+
+    <h2 ng-show="error">{{error}}</h2>
+</div>

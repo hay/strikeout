@@ -331,3 +331,39 @@ html, body {
 .item-list-greensea .btn.item-list-rightbutton {
   border-left: 1px solid white;
 }
+
+/* line 2, scss/_items.scss */
+.items h3, .items form {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+/* line 7, scss/_items.scss */
+.items .inputform {
+  padding: 10px;
+  min-height: 50px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+/* line 13, scss/_items.scss */
+.items .inputform label, .items .inputform input {
+  color: #16a085;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 35px;
+  padding-right: 10px;
+}
+/* line 21, scss/_items.scss */
+.items .inputform input {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 35px;
+  padding: 5px;
+  border: 1px solid #16a085;
+}

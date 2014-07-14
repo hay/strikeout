@@ -12,19 +12,31 @@ app.controller('ItemsCtrl', function($scope, $stateParams, $rootScope, datastore
         });
     }
 
-    $scope.addItem = function() {
+    $scope.addItemByForm = function() {
+        $scope.addItem($scope.newItem);
+        $scope.newItem = '';
+    }
+
+    $scope.addItemByPrompt = function() {
+        var title = $window.prompt('Enter an item name');
+        $scope.addItem(title);
+    }
+
+    $scope.addItem = function(title) {
+        if (!title) {
+            return;
+        }
+
         var item = {
             completed : false,
             id : util.getUuid(),
             list_id : $scope.listid,
-            title : $scope.newItem
+            title : title
         };
 
         $scope.items.unshift(
             datastore.addItem( item )
         );
-
-        $scope.newItem = '';
     }
 
     $scope.deleteItem = function(item) {

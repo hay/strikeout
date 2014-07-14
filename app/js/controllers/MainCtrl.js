@@ -1,4 +1,4 @@
-app.controller('MainCtrl', function($scope, $state, $rootScope, $injector, CONF) {
+app.controller('MainCtrl', function($scope, $state, $rootScope, $injector, $window, CONF) {
     $rootScope.initializing = true;
     $rootScope.loading = true;
     $scope.online = navigator.onLine;
@@ -26,7 +26,7 @@ app.controller('MainCtrl', function($scope, $state, $rootScope, $injector, CONF)
 
     $scope.deleteRecord = function(record) {
         if ($window.confirm('Delete this item?')) {
-            recordToDelete._record.deleteRecord();
+            record._record.deleteRecord();
             return true;
         } else {
             return false;

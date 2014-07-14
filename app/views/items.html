@@ -1,7 +1,16 @@
 <div class="header">
     <header>{{currentListName}}</header>
 
-    <button class="btn btn-link pull-right visible-xs-block"
+    <form class="inputform hidden-xs" ng-submit="addItemByForm()">
+        <label>Add an item</label>
+        <input type="text" ng-model="newItem" />
+    </form>
+
+    <button class="btn btn-link visible-xs-block" ng-click="addItemByPrompt()">
+        <span class="glyphicon glyphicon-plus"></span>
+    </button>
+
+    <button class="btn btn-link visible-xs-block"
             ng-click="showLists()"
     >
         <span class="glyphicon glyphicon-list"></span>
@@ -9,11 +18,6 @@
 </div>
 
 <div class="pane-scroll">
-    <form class="inputform" ng-submit="addItem()">
-        <label>Add an item</label>
-        <input type="text" ng-model="newItem" />
-    </form>
-
     <ul class="item-list">
         <li ng-repeat="item in items | filter:{ completed : false } | orderBy:position">
             <button class="btn btn-link item-list-leftbutton item-list-never-hide"

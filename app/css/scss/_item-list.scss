@@ -10,11 +10,14 @@ $item-list-height: 50px;
         @include flexbox;
         @include flex-direction(row);
         border-bottom: 1px solid $greensea;
+        overflow: hidden;
     }
 
     .item-list-content {
         @include flex(1);
         white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         font-size: 16px;
         line-height: $item-list-height;
         padding-left: 10px;

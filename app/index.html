@@ -1,14 +1,25 @@
 <!doctype html>
 <html ng-app="kittylist">
 <head>
+<!--       _ _   _           __ _     _
+      /\ /(_) |_| |_ _   _  / /(_)___| |_
+     / //_/ | __| __| | | |/ / | / __| __|
+    / __ \| | |_| |_| |_| / /__| \__ \ |_
+    \/  \/|_|\__|\__|\__, \____/_|___/\__|
+                     |___/
+
+    Created by Hay Kranen < http://www.haykranen.nl -->
+
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Kittylist</title>
+
+    <!-- build:css assets/style.css -->
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
-    <!-- <link href="http://fonts.googleapis.com/css?family=Cabin" rel="stylesheet" /> -->
     <link rel="stylesheet" href="css/style.css" />
+    <!-- endbuild -->
 </head>
 <body ng-controller="MainCtrl" ng-class="{'no-touch' : !touchEnabled, 'has-touch' : touchEnabled}">
     <div class="pane-row" ng-show="!initializing">
@@ -21,18 +32,18 @@
         <div ui-view="settings" class="pane-col" ng-show="'settings' | isState"></div>
     </div>
 
-    <ng-include ng-show="initializing" src="'views/bootstrap.html'"></ng-include>
+    <ng-include src="'views/bootstrap.html'"></ng-include>
 
     <!-- Purely used for screen mode detection -->
     <div class="device-xs visible-xs-block"></div>
 
-    <!-- Libraries -->
+    <!-- build:js assets/app.js -->
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="lib/underscore/underscore.js"></script>
     <script src="lib/fastclick/lib/fastclick.js"></script>
 
-    <!-- Custom code -->
+    <!-- Custom stuff -->
     <script src="js/app.js"></script>
     <script src="js/conf.js"></script>
 
@@ -50,5 +61,6 @@
     <script src="js/controllers/SettingsCtrl.js"></script>
 
     <script src="js/routes.js"></script>
+    <!-- endbuild -->
 </body>
 </html>

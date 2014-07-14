@@ -23,6 +23,10 @@ app.controller('ListsCtrl', function($scope, datastore, $state, $rootScope, $sta
     $scope.addList = function() {
         var listName = $window.prompt('Enter a list name');
 
+        if (!listName) {
+            return;
+        }
+
         var list = {
             id : util.getUuid(),
             title : listName

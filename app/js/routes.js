@@ -9,30 +9,29 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         }
     };
 
-    var views = {
-        'lists' : {
-            controller : 'ListsCtrl',
-            templateUrl : 'views/lists.html',
-            resolve : commonResolves
-        },
-        'items' : {
-            controller : 'ItemsCtrl',
-            templateUrl : 'views/items.html',
-            resolve : commonResolves
-        },
-        'settings' : {
-            controller : 'SettingsCtrl',
-            templateUrl : 'views/settings.html'
-        }
-    };
-
     $stateProvider
         .state('list', {
             url : '/list/:listid',
-            views : _.pick(views, 'lists', 'items')
+            views : {
+                'lists' : {
+                    controller : 'ListsCtrl',
+                    templateUrl : 'views/lists.html',
+                    resolve : commonResolves
+                },
+                'items' : {
+                    controller : 'ItemsCtrl',
+                    templateUrl : 'views/items.html',
+                    resolve : commonResolves
+                }
+            }
         })
         .state('settings', {
             url : '/settings',
-            views : _.pick(views, 'settings')
+            views : {
+                'settings' : {
+                    controller : 'SettingsCtrl',
+                    templateUrl : 'views/settings.html'
+                }
+            }
         })
 });

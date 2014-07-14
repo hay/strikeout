@@ -1,3 +1,5 @@
+.tmp
+dist
 .sass-cache
 node_modules
 app/lib/

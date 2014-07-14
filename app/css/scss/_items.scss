@@ -4,26 +4,39 @@
         padding-right: 10px;
     }
 
+    .header header {
+        @include respond-from($screen-sm) {
+            @include flex(0 0 auto);
+            padding-right: 20px;
+        }
+    }
+
     .inputform {
-        padding: 10px;
+        padding: 7px;
         min-height: 50px;
 
+        @include flex(1);
         @include flexbox;
 
         label, input {
-            color: $greensea;
+            color: white;
             font-size: 16px;
             font-weight: normal;
-            line-height: 35px;
+            line-height: 32px;
             padding-right: 10px;
+        }
+
+        label {
+            line-height: 37px;
         }
 
         input {
             @include flex(1);
-            height: 35px;
-            padding: 5px;
-            border: 1px solid $greensea;
-
+            height: 30px;
+            padding-left: 5px;
+            padding-right: 5px;
+            border: 1px solid white;
+            background: $greensea;
         }
     }
 }

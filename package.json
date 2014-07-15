@@ -12,7 +12,8 @@
     "load-grunt-tasks": "~0.2.0",
     "grunt-angular-templates": "~0.5.4",
     "grunt-angular-gettext": "~0.2.13",
-    "grunt-usemin": "~2.0.0"
+    "grunt-usemin": "~2.0.0",
+    "grunt-targethtml" : "~0.2.6"
   },
   "engines": {
     "node": ">=0.8.0"

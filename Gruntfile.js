@@ -62,6 +62,14 @@ module.exports = function (grunt) {
             options : {
                 mangle : false
             }
+        },
+
+        targethtml : {
+            dist : {
+                files : {
+                    'dist/index.html' : 'dist/index.html'
+                }
+            }
         }
     });
 
@@ -75,6 +83,7 @@ module.exports = function (grunt) {
         'cssmin',
         'uglify',
         'usemin',
+        'targethtml',
         'clean:after'
     ]);
 

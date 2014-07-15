@@ -1,4 +1,4 @@
-app.controller('MainCtrl', function($scope, $state, $rootScope, $injector, $window, CONF) {
+app.controller('MainCtrl', function($scope, $state, $rootScope, $injector, $window, CONF, ERRORS) {
     $rootScope.initializing = true;
     $rootScope.loading = true;
     $scope.online = navigator.onLine;
@@ -15,8 +15,12 @@ app.controller('MainCtrl', function($scope, $state, $rootScope, $injector, $wind
 
         function(error) {
             $rootScope.loading = false;
-            $rootScope.isAuthenticated = false;
-            $rootScope.error = error;
+
+            if (error === ERRORS.COULD_NOT_AUTHENTICATE_CLIENT) {
+                $rootScope.isAuthenticated = false;
+            } else {
+                $rootScope.error = error.message;
+            }
         }
     );
 

@@ -1,4 +1,4 @@
-app.factory('DropboxDataStore', function($q, $window, util, CONF) {
+app.factory('DropboxDataStore', function($q, $window, util, CONF, ERRORS) {
 
     function DropboxDataStore() {
         this._datastore = false;
@@ -21,7 +21,7 @@ app.factory('DropboxDataStore', function($q, $window, util, CONF) {
                     if (self._client.isAuthenticated()) {
                         deferred.resolve(self._client);
                     } else {
-                        deferred.reject('Could not load client');
+                        deferred.reject(ERRORS.COULD_NOT_AUTHENTICATE_CLIENT);
                     }
                 });
             }, 0);
@@ -40,7 +40,7 @@ app.factory('DropboxDataStore', function($q, $window, util, CONF) {
 
                 manager.openDefaultDatastore(function (error, store) {
                     if (error) {
-                        alert('Error opening default datastore: ' + error);
+                        deferred.reject(ERRORS.COULD_NOT_OPEN_DATASTORE);
                     }
 
                     self._datastore = store;
@@ -62,9 +62,14 @@ app.factory('DropboxDataStore', function($q, $window, util, CONF) {
             util.scriptPromise(CONF.dropboxApiSrc)
                 .then(this.clientPromise)
                 .then(this.datastorePromise)
-                .then(function(datastore) {
-                    deferred.resolve(datastore);
-                });
+                .then(
+                    function(datastore) {
+                        deferred.resolve(datastore);
+                    },
+                    function(error) {
+                        deferred.reject(error);
+                    }
+                );
 
             return deferred.promise;
         },
@@ -73,6 +78,11 @@ app.factory('DropboxDataStore', function($q, $window, util, CONF) {
             return this.client.isAuthenticated();
         }
     };
+
+    DropboxDataStore.authenticate = function() {
+        var client = new $window.Dropbox.Client({ key : CONF.dropboxAppKey });
+        return client.authenticate();
+    }
 
     return DropboxDataStore;
 });

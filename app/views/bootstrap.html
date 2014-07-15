@@ -4,10 +4,10 @@
     <h2 ng-show="!online">You need to be online to view your lists.</h2>
 
     <div ng-show="online">
-        <h2 ng-show="initializing || loading">Loading...</h2>
+        <h2 ng-show="loading">Loading...</h2>
 
          <div ng-show="!loading && !isAuthenticated">
-            <h2>Use Dropbox to sync</h2>
+            <p>Link your Dropbox account to start using this app</p>
 
             <button class="btn btn-primary"
                     ng-click="authenticate()"

@@ -58,6 +58,10 @@ app.factory('DataStore', function(CONF, $rootScope, $q, util, DropboxDataStore, 
     var datastore = false;
 
     return {
+        authenticate : function() {
+            return DropboxDataStore.authenticate();
+        },
+
         getDatastore : function() {
             var deferred = $q.defer();
 
@@ -66,10 +70,15 @@ app.factory('DataStore', function(CONF, $rootScope, $q, util, DropboxDataStore, 
 
                 var provider = new DropboxDataStore();
 
-                provider.getDatastore().then(function(datastoreprovider) {
-                    datastore = new DataStore(datastoreprovider);
-                    deferred.resolve(datastore);
-                });
+                provider.getDatastore().then(
+                    function(datastoreprovider) {
+                        datastore = new DataStore(datastoreprovider);
+                        deferred.resolve(datastore);
+                    },
+                    function(error) {
+                        deferred.reject(error);
+                    }
+                );
             } else if (datastore === 'loading') {
                 deferred.notify('loading');
 

@@ -5,7 +5,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         clean: {
             before : ['dist/*', '.tmp'],
-            after : ['dist/css', 'dist/js', 'dist/lib', 'dist/views', 'dist/assets/templates.js']
+            after : ['dist/css', 'dist/js/*', '!dist/js/conf.js', 'dist/lib', 'dist/views', 'dist/assets/templates.js']
         },
 
         compass: {

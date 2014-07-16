@@ -17,7 +17,7 @@ app.factory('DropboxDataStore', function($q, $window, util, CONF, ERRORS) {
             setTimeout(function() {
                 self._client = new $window.Dropbox.Client({ key : CONF.dropboxAppKey });
 
-                self._client.authenticate({ interactive : false }, function(error) {
+                self._client.authenticate({ interactive : false }, function(error, client) {
                     if (self._client.isAuthenticated()) {
                         deferred.resolve(self._client);
                     } else {
@@ -76,6 +76,10 @@ app.factory('DropboxDataStore', function($q, $window, util, CONF, ERRORS) {
 
         isAuthenticated : function() {
             return this.client.isAuthenticated();
+        },
+
+        logout : function() {
+            return this._client.signOut();
         }
     };
 

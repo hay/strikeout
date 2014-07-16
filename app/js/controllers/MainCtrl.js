@@ -28,6 +28,10 @@ app.controller('MainCtrl', function($scope, $state, $rootScope, $injector, $wind
         DataStore.authenticate();
     }
 
+    $scope.logout = function() {
+        DataStore.logout();
+    }
+
     $scope.deleteRecord = function(record) {
         if ($window.confirm('Delete this item?')) {
             record._record.deleteRecord();

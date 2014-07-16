@@ -2,7 +2,7 @@
 A HTML5 cloud-synced task manager
 
 ## Philosophy
-### Why is this better than <another task manager>?
+### Why is this better than &lt;another task manager&gt;?
 * It's faster and smaller, no clutter
 * No features you don't need
 * Code a feature, fix a bug, it's open source
@@ -54,6 +54,7 @@ A HTML5 cloud-synced task manager
 * You need to run a `bower install` once in the root to install the libraries
 
 ### Make a production version
+* Note that for the production version your webserver *must* serve files over https
 * Configure a Dropbox datastore app and add the product key to `js/conf.js`
 * Do a `npm install` in the root of the directory to get Grunt and all other dependencies
 * Run 'grunt' in the root of the project to build the project

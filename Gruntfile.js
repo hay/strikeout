@@ -48,14 +48,14 @@ module.exports = function (grunt) {
         },
 
         useminPrepare: {
-            html: 'app/index.html',
+            html: ['app/index.html', 'app/auth.html'],
             options: {
                 dest: 'dist'
             }
         },
 
         usemin: {
-            html : 'dist/index.html'
+            html : ['dist/index.html', 'dist/auth.html']
         },
 
         uglify : {
@@ -67,6 +67,7 @@ module.exports = function (grunt) {
         targethtml : {
             dist : {
                 files : {
+                    'dist/auth.html' : 'dist/auth.html',
                     'dist/index.html' : 'dist/index.html'
                 }
             }

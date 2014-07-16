@@ -25,7 +25,7 @@ app.controller('MainCtrl', function($scope, $state, $rootScope, $injector, $wind
     );
 
     $scope.authenticate = function() {
-        DataStore.authenticate();
+        window.location = window.location.origin + window.location.pathname + 'auth.html';
     }
 
     $scope.logout = function() {

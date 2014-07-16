@@ -1,0 +1,82 @@
+<!doctype html>
+<html ng-app="kittylist">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Kittylist Authentication</title>
+
+    <!-- build:css assets/style.css -->
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- endbuild -->
+
+<!--(if target dist)>
+    <script>
+        window.__ENV__ = 'dist';
+    </script>
+<!(endif)-->
+
+<!--(if target !dist)><!-->
+    <script>
+        window.__ENV__ = 'dev';
+    </script>
+<!--<!(endif)-->
+
+    <script>
+    (function(w, l) {
+        if (w.__ENV__ === 'dist' && l.protocol !== 'https:') {
+            l.href = "https:" + l.href.substring(l.protocol.length);
+        }
+    })(window, window.location);
+    </script>
+</head>
+<body>
+    <div class="overlay" ng-class="{'overlay-show' : initializing, 'overlay-hide' : !initializing}">
+        <h1>Kittylist</h1>
+        <h2 id="message">Authenticating...</h2>
+    </div>
+
+    <script>
+        var conf = {};
+
+        var app = {
+            constant : function(name, obj) {
+                conf = obj;
+            }
+        };
+    </script>
+
+    <script src="js/conf.js"></script>
+    <script>
+        document.write('<script src="' + conf.dropboxApiSrc + '"><\/script>');
+    </script>
+    <script>
+        var client;
+
+        function load() {
+            if (Dropbox && Dropbox.Client) {
+                client = new Dropbox.Client({ key : conf.dropboxAppKey });
+
+                client.authenticate({ interactive : false }, function(error) {
+                    if (error) {
+                        document.getElementById('message', error);
+                    }
+
+                    if (client.isAuthenticated()) {
+                        var appUrl = window.location.origin + window.location.pathname.replace('auth.html', '');
+                        window.location = appUrl;
+                    } else {
+                        client.authenticate();
+                    }
+                });
+            } else {
+                setTimeout(load, 200);
+            }
+        }
+
+        load();
+    </script>
+</body>
+</html>

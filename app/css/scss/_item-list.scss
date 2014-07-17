@@ -9,7 +9,7 @@ $item-list-height: 50px;
         height: $item-list-height;
         @include flexbox;
         @include flex-direction(row);
-        border-bottom: 1px solid $greensea;
+        border-bottom: 1px solid $basecolor;
         overflow: hidden;
     }
 
@@ -28,11 +28,11 @@ $item-list-height: 50px;
     }
 
     .btn.item-list-leftbutton {
-        border-right: 1px solid $greensea;
+        border-right: 1px solid $basecolor;
     }
 
     .btn.item-list-rightbutton {
-        border-left: 1px solid $greensea;
+        border-left: 1px solid $basecolor;
     }
 }
 
@@ -58,7 +58,7 @@ $item-list-height: 50px;
     }
 
     .no-touch & li:hover, .item-list-selected {
-        background: $midnightblue;
+        background: $secondcolor;
     }
 
     .btn.item-list-leftbutton {

@@ -3,7 +3,7 @@ $header-height: 45px;
 
 .header {
     color: white;
-    background: $greensea;
+    background: $basecolor;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     @include flex(0 0 $header-height);
     @include flexbox;

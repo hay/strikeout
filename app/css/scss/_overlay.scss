@@ -6,7 +6,7 @@
     @include justify-content(center);
     @include align-items(center);
     @include flex-direction(column);
-    background: $greensea;
+    background: $basecolor;
     color: white;
     z-index: 2;
     text-align: center;

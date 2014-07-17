@@ -1,5 +1,5 @@
 app.controller('ListsCtrl', function($scope, datastore, $state, $rootScope, $stateParams, util, $window, $timeout) {
-    $scope.currentListId = $stateParams.listid;
+    $rootScope.currentListId = $stateParams.listid;
     $scope.lists = datastore.getLists();
 
     var currentList = datastore.getLists({ id : $scope.currentListId });
@@ -9,6 +9,8 @@ app.controller('ListsCtrl', function($scope, datastore, $state, $rootScope, $sta
     }
 
     $scope.showItems = function(list) {
+        $rootScope.currentListId = list.id;
+
         if ($scope.isDeviceXs()) {
             $scope.hideLists();
 

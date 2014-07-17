@@ -13,7 +13,7 @@ app.directive('scrollfix', function($rootScope, $timeout) {
                 $rootScope.listScrollTop = e.target.scrollTop;
             }
 
-            elem[0].addEventListener('scroll', _.debounce(handler, 100), false);
+            elem[0].addEventListener('scroll', _.debounce(handler, 40), false);
         },
 
         restrict : 'A'

@@ -1,7 +1,5 @@
 app.controller('ItemsCtrl', function($scope, $stateParams, $rootScope, datastore, util, $window) {
-    $scope.showCompleted = true;
     $scope.listid = $stateParams.listid;
-
     $scope.allItems = datastore.getItems();
 
     if ($stateParams.listid === 'all') {
@@ -46,6 +44,10 @@ app.controller('ItemsCtrl', function($scope, $stateParams, $rootScope, datastore
             });
         }
     }
+
+    $scope.toggleShowCompleted = function() {
+        $rootScope.showCompleted = !$rootScope.showCompleted;
+    };
 
     $scope.updateItem = function(item, key, value) {
         $scope.updateRecord(item, key, value);

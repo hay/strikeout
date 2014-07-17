@@ -16,7 +16,21 @@ $header-height: 45px;
         letter-spacing: 1px;
         line-height: $header-height;
         padding-left: 10px;
+
+        span {
+            display: inline-block;
+            float: left;
+        }
     }
+}
+
+.header .logo {
+    display: inline-block;
+    float: left;
+    @include logo;
+    @include wh(30px, 30px);
+    margin-top: 6px;
+    margin-right: 6px;
 }
 
 .header .glyphicon {

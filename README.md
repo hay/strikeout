@@ -9,7 +9,7 @@ A HTML5 cloud-synced task manager
 * Sync all your devices using Dropbox
 
 ### What it should do (Alpha features)
-* ☑ Load really, really fast
+* ☑ Load fast
 * ☐ Load faster on mobile
 * ☑ Nice flat UI
 * ☑ No fancy graphics and stuff that makes it load slowly
@@ -20,10 +20,11 @@ A HTML5 cloud-synced task manager
 * ☑ Create items
 * ☑ Create lists
 * ☑ Overview of all lists
-* ☐ Manual re-ordering of items
+* ☐ Edit text of items
+* ☐ Edit text of lists
 * ☐ Manual re-ordering of lists
+* ☐ Manual re-ordering of items
 * ☐ Re-organize items into other lists
-* ☐ Edit text of items and list
 
 ### What it should do, sometime, in the future (Beta features)
 * Automatic recognition of hyperlinks

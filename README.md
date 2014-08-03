@@ -1,4 +1,4 @@
-# Kittylist
+# Strikeout
 A HTML5 cloud-synced task manager
 
 ## Philosophy

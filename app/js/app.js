@@ -1,4 +1,4 @@
-window.app = angular.module('kittylist', [
+window.app = angular.module('strikeout', [
     'ui.router'
 ]);
 

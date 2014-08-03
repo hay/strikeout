@@ -1,5 +1,5 @@
 {
-    "name" : "kittylist",
+    "name" : "strikeout",
     "version" : "0.1",
     "dependencies" : {
         "bootstrap" : "3.2.*",

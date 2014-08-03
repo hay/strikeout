@@ -28,9 +28,9 @@ $header-height: 45px;
     display: inline-block;
     float: left;
     @include logo;
-    @include wh(30px, 30px);
+    @include wh(100%, 30px);
+    background-position: left center;
     margin-top: 6px;
-    margin-right: 6px;
 }
 
 .header .glyphicon {

@@ -17,7 +17,7 @@
 
     .logo {
         @include logo;
-        @include wh(150px, 150px);
+        @include wh(100%, 150px);
     }
 }
 

@@ -1,3 +1,8 @@
+@mixin logo {
+    background: url('../img/logo.svg') no-repeat center center;
+    background-size: contain;
+}
+
 @mixin respond-between($min, $max) {
     @media (min-width: $min) and (max-width: $max - 1) {
         @content;

@@ -41,7 +41,7 @@ module.exports = function (grunt) {
                 src: 'views/*.html',
                 dest: 'dist/assets/templates.js',
                 options : {
-                    module : 'kittylist',
+                    module : 'strikeout',
                     usemin : 'assets/app.js'
                 }
             }
